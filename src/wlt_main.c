@@ -101,7 +101,7 @@ static int window_init(struct wlt_app *app)
 	struct wlt_terminal *term;
 
 	ret = wlt_display_create_window(app->disp, &app->wnd,
-					600, 400, app);
+					1910, 1080, app);
 	if (ret) {
 		log_error("cannot create wayland window");
 		return ret;

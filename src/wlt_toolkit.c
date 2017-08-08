@@ -1517,7 +1517,7 @@ static void shell_surface_configure(void *data, struct wl_shell_surface *s,
 		height = 1;
 
 	wnd->resize_edges = edges;
-	wlt_window_set_size(wnd, width, height);
+//	wlt_window_set_size(wnd, width, height);
 }
 
 static void shell_surface_popup_done(void *data, struct wl_shell_surface *s)
@@ -1587,7 +1587,7 @@ int wlt_display_create_window(struct wlt_display *disp,
 				      &shell_surface_listener, wnd);
 	wl_shell_surface_set_fullscreen(wnd->w_shell_surface,
          WL_SHELL_SURFACE_FULLSCREEN_METHOD_DEFAULT, 0, NULL);
-wnd->fullscreen = !wnd->fullscreen;
+	wnd->fullscreen = true;
 	ret = resize_window(wnd, width, height);
 	if (ret)
 		goto err_shell_surface;
