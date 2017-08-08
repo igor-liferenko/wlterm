@@ -995,12 +995,8 @@ static void do_esc(struct tsm_vte *vte, uint32_t data)
 		vte->gr = &vte->g3;
 		break;
 	case '=': /* DECKPAM */
-		/* Set application keypad mode */
-		vte->flags |= FLAG_KEYPAD_APPLICATION_MODE;
 		break;
 	case '>': /* DECKPNM */
-		/* Set numeric keypad mode
-		vte->flags &= ~FLAG_KEYPAD_APPLICATION_MODE; */
 		break;
 	case 'c': /* RIS */
 		/* hard reset */
