@@ -550,25 +550,6 @@ static void widget_pointer_button(struct wlt_widget *widget,
 	}
 }
 
-static bool widget_key(struct wlt_widget *widget, unsigned int mask,
-		       uint32_t sym, uint32_t ascii, uint32_t state,
-		       bool handled, void *data)
-{
-	struct wlt_theme *theme = data;
-
-	if (handled || state != WL_KEYBOARD_KEY_STATE_PRESSED)
-		return false;
-
-	if (conf_grab_matches(wlt_conf.grab_fullscreen,
-			      mask, 1, &sym)) {
-		wlt_window_toggle_fullscreen(theme->wnd);
-		return true;
-	}
-
-	return false;
-}
-
-
 static void widget_destroy(struct wlt_widget *widget, void *data)
 {
 	struct wlt_theme *theme = data;
@@ -615,7 +596,6 @@ int wlt_theme_new(struct wlt_theme **out, struct wlt_window *wnd)
 	wlt_widget_set_pointer_cb(theme->widget, widget_pointer_enter,
 				  widget_pointer_leave, widget_pointer_motion,
 				  widget_pointer_button);
-	wlt_widget_set_keyboard_cb(theme->widget, widget_key);
 	*out = theme;
 	return 0;
 

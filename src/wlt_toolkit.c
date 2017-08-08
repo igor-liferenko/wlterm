@@ -1585,8 +1585,9 @@ int wlt_display_create_window(struct wlt_display *disp,
 
 	wl_shell_surface_add_listener(wnd->w_shell_surface,
 				      &shell_surface_listener, wnd);
-	wl_shell_surface_set_toplevel(wnd->w_shell_surface);
-
+	wl_shell_surface_set_fullscreen(wnd->w_shell_surface,
+         WL_SHELL_SURFACE_FULLSCREEN_METHOD_DEFAULT, 0, NULL);
+wnd->fullscreen = !wnd->fullscreen;
 	ret = resize_window(wnd, width, height);
 	if (ret)
 		goto err_shell_surface;
@@ -1817,33 +1818,6 @@ void wlt_window_toggle_maximize(struct wlt_window *wnd)
 bool wlt_window_is_maximized(struct wlt_window *wnd)
 {
 	return wnd && wnd->maximized;
-}
-
-void wlt_window_toggle_fullscreen(struct wlt_window *wnd)
-{
-	if (!wnd)
-		return;
-
-	if (wnd->fullscreen) {
-		if (wnd->maximized) {
-			wl_shell_surface_set_maximized(wnd->w_shell_surface,
-						       NULL);
-		} else {
-			wl_shell_surface_set_toplevel(wnd->w_shell_surface);
-			wlt_window_set_size(wnd, wnd->saved_width,
-					    wnd->saved_height);
-		}
-	} else {
-		if (!wnd->maximized) {
-			wnd->saved_width = wnd->buffer.width;
-			wnd->saved_height = wnd->buffer.height;
-		}
-		wl_shell_surface_set_fullscreen(wnd->w_shell_surface,
-				WL_SHELL_SURFACE_FULLSCREEN_METHOD_DEFAULT,
-				0, NULL);
-	}
-
-	wnd->fullscreen = !wnd->fullscreen;
 }
 
 bool wlt_window_is_fullscreen(struct wlt_window *wnd)
