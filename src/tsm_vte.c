@@ -994,9 +994,9 @@ static void do_esc(struct tsm_vte *vte, uint32_t data)
 		/* Invoke G3 into GR */
 		vte->gr = &vte->g3;
 		break;
-	case '=': /* DECKPAM */
+	case '=': /* smkx */
 		break;
-	case '>': /* DECKPNM */
+	case '>': /* rmkx */
 		break;
 	case 'c': /* RIS */
 		/* hard reset */
