@@ -999,8 +999,8 @@ static void do_esc(struct tsm_vte *vte, uint32_t data)
 		vte->flags |= FLAG_KEYPAD_APPLICATION_MODE;
 		break;
 	case '>': /* DECKPNM */
-		/* Set numeric keypad mode */
-		vte->flags &= ~FLAG_KEYPAD_APPLICATION_MODE;
+		/* Set numeric keypad mode
+		vte->flags &= ~FLAG_KEYPAD_APPLICATION_MODE; */
 		break;
 	case 'c': /* RIS */
 		/* hard reset */
@@ -2468,144 +2468,78 @@ bool tsm_vte_handle_keyboard(struct tsm_vte *vte, uint32_t keysym,
 			return true;
 		case XKB_KEY_Up:
 		case XKB_KEY_KP_Up:
-			if (vte->flags & FLAG_CURSOR_KEY_MODE)
 				vte_write(vte, "\eOA", 3);
-			else
-				vte_write(vte, "\e[A", 3);
 			return true;
 		case XKB_KEY_Down:
 		case XKB_KEY_KP_Down:
-			if (vte->flags & FLAG_CURSOR_KEY_MODE)
 				vte_write(vte, "\eOB", 3);
-			else
-				vte_write(vte, "\e[B", 3);
 			return true;
 		case XKB_KEY_Right:
 		case XKB_KEY_KP_Right:
-			if (vte->flags & FLAG_CURSOR_KEY_MODE)
 				vte_write(vte, "\eOC", 3);
-			else
-				vte_write(vte, "\e[C", 3);
 			return true;
 		case XKB_KEY_Left:
 		case XKB_KEY_KP_Left:
-			if (vte->flags & FLAG_CURSOR_KEY_MODE)
 				vte_write(vte, "\eOD", 3);
-			else
-				vte_write(vte, "\e[D", 3);
 			return true;
 		case XKB_KEY_KP_Insert:
 		case XKB_KEY_KP_0:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOp", 3);
-			else
-				vte_write(vte, "0", 1);
 			return true;
 		case XKB_KEY_KP_1:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOq", 3);
-			else
-				vte_write(vte, "1", 1);
 			return true;
 		case XKB_KEY_KP_2:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOr", 3);
-			else
-				vte_write(vte, "2", 1);
 			return true;
 		case XKB_KEY_KP_3:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOs", 3);
-			else
-				vte_write(vte, "3", 1);
 			return true;
 		case XKB_KEY_KP_4:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOt", 3);
-			else
-				vte_write(vte, "4", 1);
 			return true;
 		case XKB_KEY_KP_5:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOu", 3);
-			else
-				vte_write(vte, "5", 1);
 			return true;
 		case XKB_KEY_KP_6:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOv", 3);
-			else
-				vte_write(vte, "6", 1);
 			return true;
 		case XKB_KEY_KP_7:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOw", 3);
-			else
-				vte_write(vte, "7", 1);
 			return true;
 		case XKB_KEY_KP_8:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOx", 3);
-			else
-				vte_write(vte, "8", 1);
 			return true;
 		case XKB_KEY_KP_9:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOy", 3);
-			else
-				vte_write(vte, "9", 1);
 			return true;
 		case XKB_KEY_KP_Subtract:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOm", 3);
-			else
-				vte_write(vte, "-", 1);
 			return true;
 		case XKB_KEY_KP_Separator:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOl", 3);
-			else
-				vte_write(vte, ",", 1);
 			return true;
 		case XKB_KEY_KP_Delete:
 		case XKB_KEY_KP_Decimal:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOn", 3);
-			else
-				vte_write(vte, ".", 1);
 			return true;
 		case XKB_KEY_KP_Equal:
 		case XKB_KEY_KP_Divide:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOj", 3);
-			else
-				vte_write(vte, "/", 1);
 			return true;
 		case XKB_KEY_KP_Multiply:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOo", 3);
-			else
-				vte_write(vte, "*", 1);
 			return true;
 		case XKB_KEY_KP_Add:
-			if (vte->flags & FLAG_KEYPAD_APPLICATION_MODE)
 				vte_write(vte, "\eOk", 3);
-			else
-				vte_write(vte, "+", 1);
 			return true;
 		case XKB_KEY_Home:
 		case XKB_KEY_KP_Home:
-			if (vte->flags & FLAG_CURSOR_KEY_MODE)
 				vte_write(vte, "\eOH", 3);
-			else
-				vte_write(vte, "\e[H", 3);
 			return true;
 		case XKB_KEY_End:
 		case XKB_KEY_KP_End:
-			if (vte->flags & FLAG_CURSOR_KEY_MODE)
 				vte_write(vte, "\eOF", 3);
-			else
-				vte_write(vte, "\e[F", 3);
 			return true;
 		case XKB_KEY_KP_Space:
 			vte_write(vte, " ", 1);
