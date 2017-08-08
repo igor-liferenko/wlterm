@@ -409,7 +409,7 @@ struct conf_option options[] = {
 	CONF_OPTION_GRAB(0, "grab-paste", &wlt_conf.grab_paste, &def_grab_paste),
 
 	CONF_OPTION_STRING(0, "font-engine", &wlt_conf.font_engine, "pango"),
-	CONF_OPTION_UINT(0, "font-size", &wlt_conf.font_size, 12),
+	CONF_OPTION_UINT(0, "font-size", &wlt_conf.font_size, 24),
 	CONF_OPTION_STRING(0, "font-name", &wlt_conf.font_name, "monospace"),
 	CONF_OPTION_UINT(0, "font-dpi", &wlt_conf.font_ppi, 96),
 

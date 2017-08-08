@@ -223,8 +223,8 @@ static uint8_t color_palette[COLOR_NUM][3] = {
 	[COLOR_LIGHT_CYAN]    = {   0, 255, 255 }, /* light cyan */
 	[COLOR_WHITE]         = { 255, 255, 255 }, /* white */
 
-	[COLOR_FOREGROUND]    = { 229, 229, 229 }, /* light grey */
-	[COLOR_BACKGROUND]    = {   0,   0,   0 }, /* black */
+	[COLOR_FOREGROUND]    = { 0, 0, 0 }, /* black */
+	[COLOR_BACKGROUND]    = {   255,   255,  255 }, /* white */
 };
 
 static uint8_t color_palette_solarized[COLOR_NUM][3] = {
