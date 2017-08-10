@@ -342,6 +342,7 @@ static void setup_child(int master, struct winsize *ws)
 
 	/* erase character should be normal backspace */
 	attr.c_cc[VERASE] = 010;
+        attr.c_cc[VSTOP] = 0;
 
 	/* set changed terminal attributes */
 	if (tcsetattr(slave, TCSANOW, &attr) < 0) {
