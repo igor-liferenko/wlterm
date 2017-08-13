@@ -1,3 +1,5 @@
+after ./configure is run, save all generated files to git and do not use ./configure anymore
+
 NOTE: use --debug option
 
 understand when is called this code:
