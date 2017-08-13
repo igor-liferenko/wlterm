@@ -1,0 +1,9 @@
+understand when is called this code:
+  llog_debug(vte, "unhandled control char %u", ctrl);
+(this happens when I do cfmakeraw on controlling tty and press CTRL+C)
+
+make that bold and underlined text will be handled in manpages, like it is in gnome-terminal
+
+Change hack about KEY_bracketleft to use something other than KEY_ENTER (no matter if it begins with ^[[ or ^[O).
+In general, grep vte_write in wlterm/ and any sequence in 'infocmp -1' that is not in the grep may be used.
+And then change em/ repo because now it is using current hack about KEY_ENTER for CTRL+[.
