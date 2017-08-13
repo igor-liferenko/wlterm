@@ -25,4 +25,6 @@ Purge code which does not concern full-screen mode (i.e., decorations, maximize 
 
 for useful info see git log cdd87983a0b8e026917b167a601d594ded29427d.. in ~/kmscon/
 
+Implement --width option for wlterm.fn to work
+
 After you do everything, remove term/, wterm/, libtsm/ and kmscon/ repos.
