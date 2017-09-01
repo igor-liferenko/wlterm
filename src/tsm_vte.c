@@ -1492,7 +1492,8 @@ static void csi_dsr(struct tsm_vte *vte)
 	} else if (vte->csi_argv[0] == 6) {
 		x = tsm_screen_get_cursor_x(vte->con);
 		y = tsm_screen_get_cursor_y(vte->con);
-		len = snprintf(buf, sizeof(buf), "\e[%u;%uR", x, y);
+		len = snprintf(buf, sizeof(buf), "\e[%u;%uR", y + 1, x + 1); /* numbering
+                  starts from 1; order is row, column */
 		if (len >= sizeof(buf))
 			vte_write(vte, "\e[0;0R", 6);
 		else
