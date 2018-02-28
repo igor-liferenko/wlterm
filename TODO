@@ -28,3 +28,6 @@ for useful info see git log cdd87983a0b8e026917b167a601d594ded29427d.. in ~/kmsc
 Implement --width option for wlterm.fn to work
 
 After you do everything, remove term/, wterm/, libtsm/ and kmscon/ repos.
+
+Find out why termital breaks when I use this PS1 and then put this to post-install.sh instead of force_color:
+echo PS1=$'\'''`tput bold; tput setaf 2`\u@\h`tput sgr0`:`tput bold; tput setaf 4`\w`tput sgr0`$ '$'\'' >>/home/user/.bashrc
