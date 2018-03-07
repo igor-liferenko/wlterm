@@ -29,6 +29,6 @@ Implement --width option for wlterm.fn to work
 
 After you do everything, remove term/, wterm/, libtsm/ and kmscon/ repos.
 
-Generate ASCII DEL when ^H is pressed - this is to make ^H and <-- work in canonical mode.
+Generate ASCII DEL when ^H is pressed - this is to make both ^H and <-- work in canonical mode.
 Now we have a free keycode ^H, so generate it when ^[ is pressed - this is to use this keybinding in EM.
-HINT: use the same code which changes keycodes in gnome-terminal compatibility options - egrep -r 'backspace-binding|delete-binding' gnome-terminal (or vte) source (see git lg vbox-stage if I recompiled one of those) and use ascii-delete to set ^H key, and ascii-backspace to set ^[ key
+HINT: use the same source which changes keycodes in gnome-terminal compatibility options - egrep -r 'backspace-binding|delete-binding' gnome-terminal_or_vte_source (see git lg vbox-stage if I recompiled one of those) and use ascii-delete to set ^H key, and ascii-backspace to set ^[ key
